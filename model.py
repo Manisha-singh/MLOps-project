@@ -46,17 +46,17 @@ def main(i):
     
     result= model.fit(training_set,
     steps_per_epoch=20,
-    epochs=1,
+    epochs=i,
     validation_data=test_set,
     validation_steps=20)        
     model.summary()
     accuracy=result.history['accuracy'][-1]*100
     print("current accuracy=", accuracy)
     model.save("chest_xray_test.h5")
-    return accuracy
     sys.stdout=open("accuracy.txt","w")
     print(int(result.history['accuracy'][-1]*100))
     sys.stdout.close()
+    return accuracy
 
 
 main(i)
